@@ -48,11 +48,11 @@ const SftpToS3 = {
           return retrieveFileStreams(sftp, config, filteredFiles, "sftp");
         })
         .then((dataArray) => {
-          console.info('Files retrieved');
+          console.info("Files retrieved");
           return uploadToS3.putBatch(config, dataArray);
         })
         .then((files) => {
-          console.info('S3 put finished');
+          console.info("S3 put finished");
           sftp.mkdir(config.completedDir, true)
           return sftp.list(config.fileDownloadDir);
         })
